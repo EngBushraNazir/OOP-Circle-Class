@@ -1,0 +1,41 @@
+#include<iostream>
+#include<stdlib.h>
+#include<cstring>
+using namespace std;
+
+class student{
+
+public:
+	char n[50];  //name 
+	double g;    //GPA
+
+	student (){
+		strcpy_s(n,"");
+		g=0;
+	}
+	student (char a[], double b){
+		strcpy_s(n,a);
+		g=b;
+	}
+	void get (){
+		cout<<"Enter name : ";
+		fflush(stdin); fflush(stdout);
+		cin.get(n,50);
+		cout<<"enter GPA : ";
+		cin>>g;
+	}
+	void show(){
+		cout<<"Name :"<<n<<endl<<"GPA : "<<g<<endl;
+	}
+};
+
+
+
+int main (){
+
+	student ob1 ,ob2("rashid farid",2.5);
+	ob2.show();
+	ob1.get();
+	ob1.show();
+	
+}
