@@ -1,0 +1,85 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+class matrix {
+private:
+	unsigned int row, col;
+	double ary[3][3];
+public:
+	matrix() {
+		row = 3;
+		col = 3;
+		for (int i = 0; i < row; i++) {
+			for (int j = 0;j < col;j++) {
+				ary[i][j] = 0;
+			}
+		}
+	}
+	matrix(double A[3][3], unsigned int rows, unsigned int col) {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0;j < col;j++) {
+				ary[i][j] = A[i][j];
+			}
+		}
+	}
+	void get() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0;j < col;j++) {
+				cout << "A[" << i << "][" << j << "]" << "=";
+				cin >> ary[i][j];
+			}
+		}
+	}
+	void show() {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0;j < col;j++) {
+				cout << ary[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
+	double mod(matrix);
+	void add(matrix, matrix);
+	void sub(matrix, matrix);
+	void mul(matrix, matrix);
+};
+void matrix::add(matrix a, matrix b) {
+	for (int i = 0; i < row; i++) {
+		for (int j = 0;j < col;j++) {
+			ary[i][j] = a.ary[i][j] + b.ary[i][j];
+		}
+	}
+}
+double matrix::mod(matrix a) {
+	double determinant;
+	determinant = ary[0][0] * ((ary[1][1] * ary[2][2]) - (ary[2][1] * ary[1][2])) +
+		ary[0][1] * ((ary[1][0] * ary[2][2]) - (ary[1][2] * ary[2][0])) -
+		ary[0][2] * ((ary[1][0] * ary[2][1]) - (ary[1][1] * ary[2][0]));
+	return determinant;
+}
+void matrix::sub(matrix a, matrix b) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0;j < 3;j++) {
+			ary[i][j] = a.ary[i][j] - b.ary[i][j];
+		}
+	}
+}
+void matrix::mul(matrix a, matrix b) {
+	for (int i = 0; i < row; i++) {
+		for (int j = 0;j < col;j++) {
+			for (int k = 0; k < 3; k++) {
+				ary[i][j] += a.ary[i][k] * b.ary[k][j];
+			}
+		}
+	}
+}
+int main() {
+	matrix m1, m2, m3;
+	m1.get();
+	m2.get();
+	m3.mul(m1, m2);
+	m3.show();
+	m3.add(m1, m2);
+	m3.show();
+	return 0;
+}

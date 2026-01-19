@@ -1,0 +1,146 @@
+#include<iostream>
+#include<stdlib.h>
+#include<time.h>
+#include<Windows.h>
+using namespace std ;
+
+class electric_car{
+
+
+public:
+	int BL;
+	electric_car(){
+		BL=0;
+	}
+
+	void recharge(){
+		if(BL<100)
+			BL+=1;
+	}
+
+	void show_BL(){
+
+		cout<<"Battery Level : "<<BL<<" % "<<endl;
+	}
+
+};
+
+
+class petrol_car{
+
+
+public:
+	double  FL;
+
+	petrol_car(){
+		FL=0;
+	}
+
+	void fill_up(){
+		if(FL<50.0)
+			FL+=0.5;
+	}
+
+	void show_fuel(){
+
+		cout<<"Fuel level : "<<FL<<"Liter "<<endl;
+	}
+
+};
+
+
+class hybrid_car: public electric_car ,public petrol_car{
+
+	char running_mode;
+public:
+
+	hybrid_car(){
+		running_mode='B';
+		//	switch_mode(running_mode);
+	}
+
+
+	void switch_mode (char mode){
+
+		running_mode=mode;
+
+	}
+
+
+	void run(){
+		electric_car ob1;
+		petrol_car ob2;
+
+		if(running_mode=='B'){
+
+			ob1.BL=ob1.BL-1;
+
+		}
+		if(running_mode=='F'){
+
+			ob2.FL=ob2.FL-0.5;
+		}
+	}
+
+
+};
+
+
+
+int main (){
+	hybrid_car ob;
+
+	srand(time(0));
+	while(1){
+		Sleep(100);
+		system("cls");
+		int Rand_number=rand()%6;
+
+		switch(Rand_number){
+
+		case 0:
+			ob.fill_up();
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+		case 1:
+
+			ob.recharge();
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+		case 2:
+
+			ob.switch_mode('B');
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+		case 3:
+
+			ob.switch_mode('F');
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+		case 4:
+
+			ob.run();
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+		case 5:
+
+			ob.recharge();
+			ob.show_BL();
+			ob.show_fuel();
+			break;
+
+		}
+
+	}
+
+
+
+	system("PAUSE");
+	return 0;
+
+}

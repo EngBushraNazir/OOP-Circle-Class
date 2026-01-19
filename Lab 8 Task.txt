@@ -1,0 +1,80 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class person {
+private:
+	char name[50];
+	int age;
+public:
+
+	person() {
+		strcpy_s(name, "");
+		age = 0;
+	}
+	person(char a[50],int b) {
+		strcpy_s(name, a);
+		age = b;
+	}
+	void get_data() {
+		cout << "Name : ";
+		cin.get(name, 50);
+		cout << "age : ";
+		cin >> age;
+		cin.ignore(1, '\n');
+
+	}
+	void show_data() {
+		cout << "Name          : " << name << endl
+			<< "age           : " << age << endl;
+	}
+};
+
+
+
+
+class student :public person {
+	char degree[50];
+	double gpa;
+public:
+	student() {
+		strcpy_s(degree, "");
+        gpa = 0;
+		person();
+	}
+	student(char a[50], int b, char c[50], double d) {
+		person(a, b);
+		strcpy_s(degree, c);
+		gpa = d;
+
+	}
+	void get_data() {
+		cout << "Enter student's Information : " << endl << endl;
+		person::get_data();
+		cout << "Degree program : ";
+		cin.getline(degree,50);
+		cout << "GPA : ";
+		cin >> gpa;
+		cout << endl;
+	}
+	void show_data() {
+		cout << "[ You typed Following Information ] " << endl<<endl;
+		person::show_data();
+		cout << "Degree Program: " << degree << endl
+			<< "GPA           : " << gpa << endl;
+	}
+};
+
+
+
+
+
+int main() {
+	student ob;
+
+	ob.get_data();
+	ob.show_data();
+
+	system("PAUSE");
+	return 0;
+}
