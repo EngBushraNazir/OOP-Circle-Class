@@ -19,10 +19,10 @@ It is my first repository on GitHub, created to document my learning journey and
 - [Lab 3 Folder](lab3/)
 
 ## 📁 LAB 4 – Make a Matrix class, Add, Subtract, Mod and Multiply two 3x3 matrices and also take mod of first matrix
-- [Lab 4 ](Lab 04.txt)
+- [Lab 4 ](Lab-04.txt)
 
 ## 📁 LAB 5 – Make a Vector class, Take Dot Product and Cross Product of two vectors, also add and subtract two vectors and take Mod of a vector, use concept of passing by reference.
-- [Lab 5 ](Lab-5-Task.txt)
+- [Lab 5 ](Lab-5-Task.cpp)
 
 ## 📁 LAB 6 – Make a time class, do operator overloading of ++ and -- Operator
 - [Lab 6 ](Lab-06-Task.cpp)
