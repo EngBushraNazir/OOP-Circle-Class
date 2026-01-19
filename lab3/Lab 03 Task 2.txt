@@ -1,0 +1,63 @@
+#include<iostream>
+#include<stdlib.h>
+#include<cstring>
+using namespace std;
+
+
+class employee{
+public:
+	unsigned int id;
+	char *name;
+	int size;
+
+
+	employee(){
+		id=1;
+		name = "";
+	
+	}
+
+	employee(int a , const char *b ){
+		id=a;
+		name=new char [size+1];
+		strcpy_s(name,size+1,b);
+	}
+
+	~employee(){
+		delete[]name;
+
+	}
+
+	void get(){
+		cout<<"enter id : ";
+		fflush (stdout);
+    	cin>>id;
+		fflush(stdin);
+		cout<<"enter name : ";
+		fflush(stdout);
+		gets(name);
+		fflush(stdin);
+	
+	}
+
+	void show(){
+	cout<<"Name : "<<name<<endl;
+	cout<<"ID : "<<id<<endl;
+	
+	}
+
+
+
+};
+
+
+
+int main (){
+	employee ob1(2,"rashid farid") , ob2;
+	ob1.show();
+	ob2.get();
+	ob2.show();
+	system ("PAUSE");
+	return 0;
+
+}
